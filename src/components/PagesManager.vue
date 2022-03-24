@@ -1,7 +1,7 @@
 <template>
-    <div>PagesManager Component</div>
     <pages-displayer :pages="pages" />
-    <button @click="addPage">Add Page</button>
+    <br />
+    <button>Hi</button>
 </template>
 
 <script>
@@ -17,16 +17,19 @@ export default {
             pages: [
                 {
                     url: "ab",
+                    createdAt: Date.now(),
                     locale: "FR",
                     template: "blog",
                 },
                 {
                     url: "cd",
+                    createdAt: Date.now(),
                     locale: "FR",
                     template: "blog",
                 },
                 {
                     url: "ef",
+                    createdAt: Date.now(),
                     locale: "FR",
                     template: "blog",
                 },
