@@ -6,12 +6,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- Main css -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/fontawesome.css" />
+    <link rel="stylesheet" href="../css/animate.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    
+    <link rel="stylesheet" href="../css/datatables.min.css" >
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="wrapper"></div>
     <!-- built files will be auto injected -->
+    <!-- Mainly scripts -->
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/jquery.metisMenu.js"></script>
+    <script src="../js/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="../js/inspinia.js"></script>
+    <script src="../js/pace.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="../js/jquery-ui.min.js"></script>
+
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
   </body>
 </html>
