@@ -70,7 +70,6 @@ export default {
             return format(date, formatString);
         },
     },
-    computed: {},
 };
 </script>
 
