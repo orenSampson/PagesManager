@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="animated fadeInRight">
         <table
             class="
                 table table-striped table-bordered table-hover
