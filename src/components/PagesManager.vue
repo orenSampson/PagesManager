@@ -2,7 +2,13 @@
     <div class="page container">
         <h1 class="pages-header">All Pages</h1>
         <span class="page-button">
-            <button @click="onAddNewPage">+</button>
+            <button
+                @click="onAddNewPage"
+                type="button"
+                class="btn btn-w btn-success"
+            >
+                +
+            </button>
         </span>
         <pages-displayer :pages="pages" />
         <new-page-form-popup
