@@ -39,7 +39,11 @@
             </thead>
             <tbody>
                 <tr v-for="page in pages" :key="page.url" role="row">
-                    <td>{{ page.url }}</td>
+                    <td>
+                        <a :href="urlToEditor(page.url)" target="_blank">{{
+                            page.url
+                        }}</a>
+                    </td>
                     <td>
                         {{
                             this.formatMethod(
@@ -68,6 +72,9 @@ export default {
     methods: {
         formatMethod(date, formatString) {
             return format(date, formatString);
+        },
+        urlToEditor(url) {
+            return `${url}?mode=edit`;
         },
     },
 };
