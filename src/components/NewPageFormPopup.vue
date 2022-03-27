@@ -1,7 +1,7 @@
 <template>
     <div class="popup">
         <div class="popup-inner">
-            <form role="form" @submit="onSubmit">
+            <form role="form" @submit.prevent="onSubmit">
                 <div class="form-group">
                     <label for="url">URL</label>
                     <input
