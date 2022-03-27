@@ -2,16 +2,23 @@
     <div class="popup">
         <div class="popup-inner">
             <form role="form" @submit.prevent="onSubmit">
-                <div class="form-group">
+                <div
+                    class="form-group"
+                    :class="{ urlInvalid: !!this.urlErrorMessage }"
+                >
                     <label for="url">URL</label>
                     <input
                         id="url"
                         type="text"
                         v-model.trim="url"
+                        @blur="checkIfURLValid"
                         autocomplete="none"
                         placeholder="Please Enter a vaild URL"
                         class="form-control"
                     />
+                    <p v-if="this.urlErrorMessage">
+                        * {{ this.urlErrorMessage }}
+                    </p>
                 </div>
 
                 <div class="col-sm-10">
@@ -74,6 +81,7 @@ export default {
     data: function () {
         return {
             url: "",
+            urlErrorMessage: "",
             localeOptions: [
                 { display: "FR", value: "fr" },
                 { display: "EN", value: "en" },
@@ -89,6 +97,17 @@ export default {
     methods: {
         onCancel() {
             this.$emit("closePopup");
+        },
+
+        checkIfURLValid() {
+            console.log("checkURLValidity called");
+            if (!this.url) {
+                this.urlErrorMessage = "URL is required";
+                return false;
+            } else {
+                this.urlErrorMessage = "";
+                return true;
+            }
         },
 
         onSubmit() {
@@ -108,6 +127,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+label {
+    font-weight: bold;
+}
+
 .popup {
     position: fixed;
     top: 0;
@@ -131,6 +154,15 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+.urlInvalid {
+    label {
+        color: red;
+    }
+    input {
+        border-color: red;
     }
 }
 </style>
