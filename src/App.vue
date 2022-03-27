@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 body {
-    background-color: white !important;
+    background-color: white;
 }
 .pages-header {
     text-align: center;
