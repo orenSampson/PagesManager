@@ -1,11 +1,15 @@
 <template>
-    <button @click="onAddNewPage">Create</button>
-    <br />
-    <pages-displayer :pages="pages" />
-    <NewPageFormPopup
-        v-if="showNewPageFormPopup"
-        @closePopup="onCloseNewPageFormPopup"
-    />
+    <div class="page container">
+        <h1 class="pages-header">All Pages</h1>
+        <span class="page-button">
+            <button @click="onAddNewPage">+</button>
+        </span>
+        <pages-displayer :pages="pages" />
+        <new-page-form-popup
+            v-if="showNewPageFormPopup"
+            @closePopup="onCloseNewPageFormPopup"
+        />
+    </div>
 </template>
 
 <script>
@@ -60,5 +64,17 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.page {
+    display: flex;
+    flex-direction: column;
+}
+.pages-header {
+    text-align: center;
+}
+.page-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
 </style>
