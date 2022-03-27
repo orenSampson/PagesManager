@@ -1,25 +1,26 @@
 <template>
-    <pages-displayer :pages="pages" />
+    <button @click="onAddNewPage">Create</button>
     <br />
-    <button @click="onAddNewPage">Create New Page</button>
-    <page-popup :display="showAddNewPagePopup">
-        <h2>My Popup Content</h2>
-    </page-popup>
+    <pages-displayer :pages="pages" />
+    <NewPageFormPopup
+        v-if="showNewPageFormPopup"
+        @closePopup="onCloseNewPageFormPopup"
+    />
 </template>
 
 <script>
 import PagesDisplayer from "./PagesDisplayer.vue";
-import PagePopup from "./PagePopup.vue";
+import NewPageFormPopup from "./NewPageFormPopup.vue";
 
 export default {
     name: "PagesManager",
     components: {
         PagesDisplayer,
-        PagePopup,
+        NewPageFormPopup,
     },
     data() {
         return {
-            showAddNewPagePopup: false,
+            showNewPageFormPopup: false,
             pages: [
                 {
                     url: "ab",
@@ -43,15 +44,17 @@ export default {
         };
     },
     methods: {
-        addPage() {
-            this.pages.push({
-                url: "",
-                locale: "FR",
-                template: "blog",
-            });
+        addNewPage(newPage) {
+            if (newPage) {
+                this.pages.unshift(newPage);
+            }
         },
         onAddNewPage() {
-            this.showAddNewPagePopup = !this.showAddNewPagePopup;
+            this.showNewPageFormPopup = true;
+        },
+        onCloseNewPageFormPopup(newPage) {
+            this.showNewPageFormPopup = false;
+            this.addNewPage(newPage);
         },
     },
 };
