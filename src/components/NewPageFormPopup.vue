@@ -29,11 +29,8 @@
                         v-model="locale"
                         class="form-control m-b"
                     >
-                        <option
-                            v-for="locale in localeOptions"
-                            :key="locale.value"
-                        >
-                            {{ locale.display }}
+                        <option v-for="locale in localeOptions" :key="locale">
+                            {{ locale }}
                         </option>
                     </select>
                 </div>
@@ -48,9 +45,9 @@
                     >
                         <option
                             v-for="template in templateOptions"
-                            :key="template.value"
+                            :key="template"
                         >
-                            {{ template.display }}
+                            {{ template }}
                         </option>
                     </select>
                 </div>
@@ -66,6 +63,7 @@
                         class="btn btn-sm btn-primary m-t-n-xs"
                         type="submit"
                         @click="onSubmit"
+                        :disabled="isSubmitBtnIsDisabled"
                     >
                         <strong>Create</strong>
                     </button>
@@ -76,22 +74,18 @@
 </template>
 
 <script>
+import { LOCALE_OPTIONS, TEMPLATE_OPTIONS } from "../constants/formValues";
+
 export default {
     emits: ["closePopup"],
     data: function () {
         return {
             url: "",
             urlErrorMessage: "",
-            localeOptions: [
-                { display: "FR", value: "fr" },
-                { display: "EN", value: "en" },
-            ],
-            locale: "",
-            templateOptions: [
-                { display: "Blog", value: "blog" },
-                { display: "Another Blog", value: "blog" },
-            ],
-            template: "",
+            localeOptions: LOCALE_OPTIONS,
+            locale: LOCALE_OPTIONS?.length ? LOCALE_OPTIONS[0] : "",
+            templateOptions: TEMPLATE_OPTIONS,
+            template: TEMPLATE_OPTIONS?.length ? TEMPLATE_OPTIONS[0] : "",
         };
     },
     methods: {
@@ -123,12 +117,22 @@ export default {
             });
         },
     },
+    computed: {
+        isSubmitBtnIsDisabled() {
+            return !this.url || !this.locale || !this.template;
+        },
+    },
 };
 </script>
 
 <style lang="scss" scoped>
 label {
     font-weight: bold;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
 }
 
 .popup {
