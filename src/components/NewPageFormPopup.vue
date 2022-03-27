@@ -21,7 +21,7 @@
                     </p>
                 </div>
 
-                <div class="col-sm-10">
+                <div>
                     <label for="locale">Locale</label>
                     <select
                         id="locale"
@@ -35,7 +35,7 @@
                     </select>
                 </div>
 
-                <div class="col-sm-10">
+                <div>
                     <label for="template">Template</label>
                     <select
                         id="template"
@@ -51,7 +51,7 @@
                         </option>
                     </select>
                 </div>
-                <div>
+                <div class="form-buttons">
                     <button
                         class="btn btn-sm btn-primary m-t-n-xs"
                         type="button"
@@ -152,12 +152,6 @@ button:disabled {
         background-color: #fff;
         padding: 20px;
         border-radius: 5px;
-        max-width: 500px;
-        max-height: 500px;
-        overflow: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 }
 
@@ -168,5 +162,10 @@ button:disabled {
     input {
         border-color: red;
     }
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-evenly;
 }
 </style>
