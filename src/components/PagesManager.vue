@@ -1,6 +1,5 @@
 <template>
-    <div class="page container">
-        <h1 class="pages-header">All Pages</h1>
+    <div class="page">
         <span class="page-button">
             <button
                 @click="onAddNewPage"
@@ -21,9 +20,22 @@
 <script>
 import PagesDisplayer from "./PagesDisplayer.vue";
 import NewPageFormPopup from "./NewPageFormPopup.vue";
+import { PAGES } from "../constants/formValues";
 
 export default {
     name: "PagesManager",
+    mounted() {
+        if (localStorage.getItem("pages")) {
+            this.pages = JSON.parse(localStorage.getItem("pages"));
+
+            if (!this.pages?.length) {
+                this.pages = [];
+            }
+        } else {
+            localStorage.setItem("pages", JSON.stringify(PAGES));
+            this.pages = PAGES;
+        }
+    },
     components: {
         PagesDisplayer,
         NewPageFormPopup,
@@ -31,32 +43,14 @@ export default {
     data() {
         return {
             showNewPageFormPopup: false,
-            pages: [
-                {
-                    url: "ab",
-                    createdAt: Date.now(),
-                    locale: "FR",
-                    template: "blog",
-                },
-                {
-                    url: "cd",
-                    createdAt: Date.now(),
-                    locale: "FR",
-                    template: "blog",
-                },
-                {
-                    url: "ef",
-                    createdAt: Date.now(),
-                    locale: "FR",
-                    template: "blog",
-                },
-            ],
+            pages: [],
         };
     },
     methods: {
         addNewPage(newPage) {
             if (newPage) {
                 this.pages.unshift(newPage);
+                localStorage.setItem("pages", JSON.stringify(this.pages));
             }
         },
         onAddNewPage() {
@@ -75,9 +69,7 @@ export default {
     display: flex;
     flex-direction: column;
 }
-.pages-header {
-    text-align: center;
-}
+
 .page-button {
     display: flex;
     justify-content: flex-end;

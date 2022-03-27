@@ -1,5 +1,8 @@
 <template>
-    <pages-manager />
+    <span class="container">
+        <h1 class="pages-header">All Pages</h1>
+        <pages-manager />
+    </span>
 </template>
 
 <script>
@@ -13,5 +16,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.pages-header {
+    text-align: center;
+}
 </style>

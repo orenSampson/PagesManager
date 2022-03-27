@@ -25,6 +25,18 @@
                         Pages
                     </th>
                     <th
+                        class="sorting_asc"
+                        tabindex="0"
+                        aria-controls="DataTables_Table_0"
+                        rowspan="1"
+                        colspan="1"
+                        aria-sort="ascending"
+                        aria-label="Rendering engine: activate to sort column descending"
+                        style="width: 289.188px"
+                    >
+                        Template
+                    </th>
+                    <th
                         class="sorting"
                         tabindex="0"
                         aria-controls="DataTables_Table_0"
@@ -45,10 +57,13 @@
                         }}</a>
                     </td>
                     <td>
+                        {{ page.template }}
+                    </td>
+                    <td>
                         {{
                             this.formatMethod(
                                 page.createdAt,
-                                "yyyy-MM-dd HH:mm:ss"
+                                formatterByLocale(page.locale)
                             )
                         }}
                     </td>
@@ -72,6 +87,18 @@ export default {
     methods: {
         formatMethod(date, formatString) {
             return format(date, formatString);
+        },
+        formatterByLocale(locale) {
+            switch (locale) {
+                case "FR":
+                    return "yyyy-MM-dd HH:mm:ss";
+
+                case "EN":
+                    return "yyyy-MM-dd HH:mm:ss";
+
+                default:
+                    return "yyyy-MM-dd HH:mm:ss";
+            }
         },
         urlToEditor(url) {
             return `${url}?mode=edit`;
