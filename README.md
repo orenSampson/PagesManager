@@ -6,14 +6,14 @@ This App is responsible for displaying pages and creating new ones.
 
 ## Display Pages:
 
-The main screen displays data table of all the pages.
+The main screen displays a data table of all the pages.
 There are 3 fields: Pages, Template & Created At.
 
 The Pages field is the url of the page. the Data is a hyperlink. When clicking on it,
 a new tab will open and the page name will be part of the url with query param: mode=edit.
 for example: ".../[page name]?mode=edit"
 
-For now, The only Template type for pages is "blog".
+For now, The only Template type for pages is "Blog".
 
 ## Create Pages:
 
