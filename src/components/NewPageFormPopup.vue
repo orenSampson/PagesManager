@@ -1,6 +1,19 @@
 <template>
     <div class="popup">
-        <div class="popup-inner">
+        <div class="popup-inner jumbotron jumbotron-style">
+            <div class="row">
+                <div class="col-2"></div>
+                <h3 class="col-8 text-center"><u>Add A New Page</u></h3>
+                <div class="col-1"></div>
+                <button
+                    class="btn btn-sm btn-primary col-1 text-center"
+                    type="button"
+                    @click="onCancel"
+                >
+                    <strong>X</strong>
+                </button>
+            </div>
+
             <form role="form" @submit.prevent="onSubmit">
                 <div
                     class="form-group"
@@ -52,13 +65,6 @@
                     </select>
                 </div>
                 <div class="form-buttons">
-                    <button
-                        class="btn btn-sm btn-primary m-t-n-xs"
-                        type="button"
-                        @click="onCancel"
-                    >
-                        <strong>cancel</strong>
-                    </button>
                     <button
                         class="btn btn-sm btn-primary m-t-n-xs"
                         type="submit"
@@ -149,9 +155,8 @@ button:disabled {
     justify-content: center;
 
     .popup-inner {
+        width: 26rem;
         background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
     }
 }
 
@@ -164,8 +169,13 @@ button:disabled {
     }
 }
 
-.form-buttons {
-    display: flex;
-    justify-content: space-evenly;
+.jumbotron-style {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
+
+// .form-buttons {
+//     display: flex;
+//     justify-content: space-evenly;
+// }
 </style>
