@@ -6,8 +6,8 @@
                 dataTables-example
                 dataTable
             "
-            id="DataTables_Table_0"
-            aria-describedby="DataTables_Table_0_info"
+            id="all_pages_dataTables"
+            aria-describedby="all_pages_dataTables"
             role="grid"
         >
             <thead>
@@ -15,11 +15,11 @@
                     <th
                         class="sorting_asc"
                         tabindex="0"
-                        aria-controls="DataTables_Table_0"
+                        aria-controls="all_pages_dataTables"
                         rowspan="1"
                         colspan="1"
                         aria-sort="ascending"
-                        aria-label="Rendering engine: activate to sort column descending"
+                        aria-label="Rendering Pages: activate to sort column descending"
                         style="width: 289.188px"
                     >
                         Pages
@@ -27,19 +27,19 @@
                     <th
                         class="sorting_asc"
                         tabindex="0"
-                        aria-controls="DataTables_Table_0"
+                        aria-controls="all_pages_dataTables"
                         rowspan="1"
                         colspan="1"
                         aria-sort="ascending"
-                        aria-label="Rendering engine: activate to sort column descending"
+                        aria-label="Rendering Template: activate to sort column descending"
                         style="width: 289.188px"
                     >
                         Template
                     </th>
                     <th
-                        class="sorting"
+                        class="sorting_asc"
                         tabindex="0"
-                        aria-controls="DataTables_Table_0"
+                        aria-controls="all_pages_dataTables"
                         rowspan="1"
                         colspan="1"
                         aria-label="Browser: activate to sort column ascending"
@@ -49,17 +49,24 @@
                     </th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr v-for="page in pages" :key="page.url" role="row">
-                    <td>
+                <tr
+                    v-for="(page, index) in pages"
+                    :key="page.url"
+                    role="row"
+                    class="gradeA"
+                    :class="{ even: index % 2 !== 0, odd: index % 2 === 0 }"
+                >
+                    <td class="sorting_1">
                         <a :href="urlToEditor(page.url)" target="_blank">{{
                             page.url
                         }}</a>
                     </td>
-                    <td>
+                    <td class="sorting_1">
                         {{ page.template }}
                     </td>
-                    <td>
+                    <td class="sorting_1">
                         {{
                             this.formatMethod(
                                 page.createdAt,
