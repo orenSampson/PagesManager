@@ -6,7 +6,7 @@
                 <h3 class="col-8 text-center"><u>Add A New Page</u></h3>
                 <div class="col-1"></div>
                 <button
-                    class="btn btn-sm btn-primary col-1 text-center"
+                    class="btn btn-sm btn-success col-1 text-center"
                     type="button"
                     @click="onCancel"
                 >
@@ -64,9 +64,9 @@
                         </option>
                     </select>
                 </div>
-                <div class="form-buttons">
+                <div class="d-flex justify-content-center">
                     <button
-                        class="btn btn-sm btn-primary m-t-n-xs"
+                        class="btn btn-success"
                         type="submit"
                         @click="onSubmit"
                         :disabled="isSubmitBtnIsDisabled"
@@ -173,9 +173,4 @@ button:disabled {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
-
-// .form-buttons {
-//     display: flex;
-//     justify-content: space-evenly;
-// }
 </style>
