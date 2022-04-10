@@ -1,6 +1,6 @@
 <template>
     <span class="container">
-        <h1 class="pages-header">All Pages</h1>
+        <h1 class="text-center">All Pages</h1>
         <pages-manager />
     </span>
 </template>
@@ -19,8 +19,5 @@ export default {
 <style lang="scss">
 body {
     background-color: white;
-}
-.pages-header {
-    text-align: center;
 }
 </style>
